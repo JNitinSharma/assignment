@@ -45,7 +45,11 @@ const AddProfile = ({navigation}:any) => {
         <Text style={style.heading}>Let's add a Photo </Text>
         <View style={style.buttonCont}>
           {image ? 
-          <Image style={style.capturedImage} resizeMode='cover' resizeMethod='resize' source = {{uri:image?.toString()}} />: null}
+          <Image style={style.capturedImage} resizeMode='cover' resizeMethod='resize' source = {{uri:image?.toString()}} />:
+          <View style={[style.capturedImage,style.center,{borderStyle:'dashed', backgroundColor:Colors.grey, borderColor:Colors.darktext}]} >
+          <Text style={style.imagePlaceholdertext}>+ {`\n`}Add Photo</Text>
+          </View>
+          }
         </View>
         {image && <Button title="UPLOAD" onPress={() => {navigation.replace('Success')}} />}
         {!image && <View style={style.overlay}>
@@ -120,4 +124,10 @@ const style = StyleSheet.create({
     flexDirection: 'row',
     flex: 0.3,
   },
+  imagePlaceholdertext:{
+    textAlign:'center', 
+    fontSize:18, 
+    color:Colors.black, 
+    lineHeight:24
+  }
 });
